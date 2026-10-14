@@ -1,0 +1,25 @@
+// Created     : 2024-10-13 22:49:37
+// DLL id      : C:\Program Files (x86)\DHI\2014\bin\x64\pfs2004.dll
+// PFS version : Feb  4 2015 19:28:27
+
+[MzTxStat]
+   CLSID = '{0C17C8E5-A30E-11D3-B4B4-006097834BE6}'
+   TypeName = 'MzTxStat'
+   CREATEDTIME = '2024-10-11T12:13:01'
+   MODIFIEDTIME = '2024-10-11T12:13:01'
+   NOTES = ''
+   [Setup]
+      Name = 'max'
+      DimensionOfTool = 2
+      InputFileName = |<input_file_path_tmp>|
+      Items = 1, 2, 3, 4, 5
+      FirstTimeStep = 0
+      LastTimeStep = <last_timestep_tmp>
+      GridLimits = 0, 0, <x_max_tmp>, <y_max_tmp>
+      Statistics = 0
+      OutputFileName = |<output_file_path_tmp>|
+      OutputTitle = ''
+   EndSect  // Setup
+
+EndSect  // MzTxStat
+

@@ -1,0 +1,108 @@
+         [SOURCE_<source_num>]
+            Touched = 1
+            MzSEPfsListItemCount = 1
+            Name = 'Source <source_num>'
+            include = 1
+            format = 0
+            vertical_type = 1
+            coordinate_type = 'PROJCS["UTM-39",GEOGCS["Unused",DATUM["UTM Projections",SPHEROID["WGS 1984",6378137,298.257223563]],PRIMEM["Greenwich",0],UNIT["Degree",0.0174532925199433]],PROJECTION["Transverse_Mercator"],PARAMETER["False_Easting",500000],PARAMETER["False_Northing",0],PARAMETER["Central_Meridian",51],PARAMETER["Scale_Factor",0.9996],PARAMETER["Latitude_Of_Origin",0],UNIT["Meter",1]]'
+            coordinates = x_coord, y_coord, 0
+            file_name = ||
+            item_numbers = 1, 2, 3
+            [CLASS_1]
+               Touched = 1
+               MzSEPfsListItemCount = 8
+               include = 1
+               number_of_particles_per_timestep = 10
+               scale_source_flux = true
+               [LAGRANGE_STATE_VARIABLE_1]
+                  Touched = 1
+                  ID = 16
+                  specie = 1
+                  format = 1
+                  initial_value = 500
+                  file_name = |<source_file_path_tmp>|
+                  item_number = 1
+                  item_name = 'Volatile mass'
+               EndSect  // LAGRANGE_STATE_VARIABLE_1
+
+               [LAGRANGE_STATE_VARIABLE_2]
+                  Touched = 1
+                  ID = 17
+                  specie = 1
+                  format = 1
+                  initial_value = 400
+                  file_name = |<source_file_path_tmp>|
+                  item_number = 2
+                  item_name = 'Heavy mass'
+               EndSect  // LAGRANGE_STATE_VARIABLE_2
+
+               [LAGRANGE_STATE_VARIABLE_3]
+                  Touched = 1
+                  ID = 18
+                  specie = 1
+                  format = 1
+                  initial_value = 80
+                  file_name = |<source_file_path_tmp>|
+                  item_number = 3
+                  item_name = 'Wax content'
+               EndSect  // LAGRANGE_STATE_VARIABLE_3
+
+               [LAGRANGE_STATE_VARIABLE_4]
+                  Touched = 1
+                  ID = 19
+                  specie = 1
+                  format = 1
+                  initial_value = 20
+                  file_name = |<source_file_path_tmp>|
+                  item_number = 4
+                  item_name = 'Asphaltene'
+               EndSect  // LAGRANGE_STATE_VARIABLE_4
+
+               [LAGRANGE_STATE_VARIABLE_5]
+                  Touched = 1
+                  ID = 20
+                  specie = 1
+                  format = 1
+                  initial_value = 0
+                  file_name = |<source_file_path_tmp>|
+                  item_number = 5
+                  item_name = 'Water fraction of oil'
+               EndSect  // LAGRANGE_STATE_VARIABLE_5
+
+               [LAGRANGE_STATE_VARIABLE_6]
+                  Touched = 1
+                  ID = 21
+                  specie = 1
+                  format = 1
+                  initial_value = 0.001
+                  file_name = |<source_file_path_tmp>|
+                  item_number = 6
+                  item_name = 'Buoyancy: average diameter of oil droplets'
+               EndSect  // LAGRANGE_STATE_VARIABLE_6
+
+               [LAGRANGE_STATE_VARIABLE_7]
+                  Touched = 1
+                  ID = 22
+                  specie = 1
+                  format = 1
+                  initial_value = 100
+                  file_name = |<source_file_path_tmp>|
+                  item_number = 7
+                  item_name = 'Surface area of oil'
+               EndSect  // LAGRANGE_STATE_VARIABLE_7
+
+               [LAGRANGE_STATE_VARIABLE_8]
+                  Touched = 1
+                  ID = 23
+                  specie = 1
+                  format = 1
+                  initial_value = 1
+                  file_name = |<source_file_path_tmp>|
+                  item_number = 8
+                  item_name = 'Particle in water phase'
+               EndSect  // LAGRANGE_STATE_VARIABLE_8
+
+            EndSect  // CLASS_1
+
+         EndSect  // SOURCE_<source_num>

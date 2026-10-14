@@ -1,0 +1,304 @@
+// Created     : 2024-07-4 10:52:38
+// DLL id      : C:\Program Files (x86)\DHI\2014\bin\x64\pfs2004.dll
+// PFS version : Feb  4 2015 19:28:27
+
+[MIKE21_NESTED_MODEL]
+   [NESTED_MODEL_GLOBALS]
+      [OPTION_PARAMETERS]
+      EndSect  // OPTION_PARAMETERS
+
+      [MODULE_SELECTION]
+         Simulation_Type = 0
+         AD_Scheme = 1
+         hydrodynamic_features = 1
+      EndSect  // MODULE_SELECTION
+
+      [BATHYMETRY_SELECTION]
+         Projection = 'PROJCS["UTM-39",GEOGCS["Unused",DATUM["UTM Projections",SPHEROID["WGS 1984",6378137,298.257223563]],PRIMEM["Greenwich",0],UNIT["Degree",0.0174532925199433]],PROJECTION["Transverse_Mercator"],PARAMETER["False_Easting",500000],PARAMETER["False_Northing",0],PARAMETER["Central_Meridian",51],PARAMETER["Scale_Factor",0.9996],PARAMETER["Latitude_Of_Origin",0],UNIT["Meter",1]]'
+         CoriolisForce = true
+         Land_Slides = false
+         Overland_Solver = false
+         Overland_Filename = ||
+         No_Of_Areas = 1
+         Hot_Start = 0
+         [AREA_1]
+            [DATA_FILE]
+               FILE_NAME = |.\bathymetry_28.dfs2|
+            EndSect  // DATA_FILE
+
+            Origin = 3, 3
+            Enclosing_Area = 0
+         EndSect  // AREA_1
+
+      EndSect  // BATHYMETRY_SELECTION
+
+      [OPEN_BOUNDARY]
+         Number_Of_Boundaries = 0
+         Default_Position = 1
+      EndSect  // OPEN_BOUNDARY
+
+      [SOURCE_AND_SINK]
+         Number_Of_Sources = 0
+      EndSect  // SOURCE_AND_SINK
+
+      [FLOOD_AND_DRY]
+         Enable_Flood_And_Dry_Checking = 1
+         Drying_Depth = 0.05
+         Flooding_Depth = 0.15
+      EndSect  // FLOOD_AND_DRY
+
+      [SIMULATION_PERIOD]
+         Number_Of_Timesteps = <number_of_timesteps_tmp>
+         Time_Step_Interval = <time_step_interval_tmp>
+         Warm_Up_Period = 0
+         Start_Time = <start_time_tmp>
+      EndSect  // SIMULATION_PERIOD
+
+      [MASS_BUDGET]
+         NoOfPolygons = 0
+      EndSect  // MASS_BUDGET
+
+   EndSect  // NESTED_MODEL_GLOBALS
+
+   [HYDRODYNAMIC_MODULE]
+      [OPTION_PARAMETERS]
+      EndSect  // OPTION_PARAMETERS
+
+      [OPEN_BOUNDARY]
+      EndSect  // OPEN_BOUNDARY
+
+      [SOURCE_AND_SINK]
+         EvaporationType = 2
+         Evaporation = 0
+         [Evaporation]
+            [DATA_FILE]
+               FILE_NAME = |<e_file_path_tmp>|
+               ITEM_COUNT = 1
+               ITEM_NUMBERS = 1
+            EndSect  // DATA_FILE
+
+         EndSect  // Evaporation
+
+         NetPrecipitation = true
+         PrecipitationType = 2
+         Precipitation = 0
+         [Precipitation]
+            [DATA_FILE]
+               FILE_NAME = |<tp_file_path_tmp>|
+               ITEM_COUNT = 1
+               ITEM_NUMBERS = 1
+            EndSect  // DATA_FILE
+
+         EndSect  // Precipitation
+
+         RainOnDryLand = false
+      EndSect  // SOURCE_AND_SINK
+
+      [WIND_CONDITIONS]
+         Data_Format = 3
+         Constant_Wind_Direction = 270
+         Constant_Wind_Speed = 10
+         Neutral_Pressure = 1013
+         IncludeAirPressureCorrections = false
+         [DATA_FILE]
+            FILE_NAME = |<meteo_file_path_tmp>|
+            ITEM_COUNT = 3
+            ITEM_NUMBERS = 3, 1, 2
+         EndSect  // DATA_FILE
+
+         Type_Of_Wind_Friction = 0
+         Constant_Friction = 0.0026
+         Linear_Friction_1 = 0.0016
+         Linear_Friction_2 = 0.0026
+         Linear_Speed_1 = 0
+         Linear_Speed_2 = 24
+      EndSect  // WIND_CONDITIONS
+
+      [EDDY_VISCOSITY]
+         Data_Format = 1
+         Formulation = 0
+         [AREA_1]
+            Constant_Value = 0.5
+            Smagorinsky_Format = 0.5
+            [DATA_FILE]
+               FILE_NAME = ''
+               ITEM_COUNT = 1
+               ITEM_NUMBERS = 1
+            EndSect  // DATA_FILE
+
+         EndSect  // AREA_1
+
+      EndSect  // EDDY_VISCOSITY
+
+      [WAVE_RADIATION]
+         [AREA_1]
+            Included = false
+            FILE_TIME_DESCR = 0
+            [DATA_FILE]
+               FILE_NAME = ||
+            EndSect  // DATA_FILE
+
+         EndSect  // AREA_1
+
+      EndSect  // WAVE_RADIATION
+
+      [SURFACE_ELEVATION]
+         [AREA_1]
+            Type = 1
+            Constant_Value = 0.6
+            [DATA_FILE]
+               FILE_NAME = ''
+               ITEM_COUNT = 1
+               ITEM_NUMBERS = 1
+            EndSect  // DATA_FILE
+
+         EndSect  // AREA_1
+
+      EndSect  // SURFACE_ELEVATION
+
+      [RESISTANCE]
+         Formulation = 0
+         [AREA_1]
+            Data_Format = 1
+            Constant_Value = 32
+            [DATA_FILE]
+               FILE_NAME = ''
+               ITEM_COUNT = 1
+               ITEM_NUMBERS = 1
+            EndSect  // DATA_FILE
+
+            Include_Pier = false
+            [PIER]
+               [DATA_FILE]
+                  FILE_NAME = ''
+                  ITEM_COUNT = 1
+                  ITEM_NUMBERS = 1
+               EndSect  // DATA_FILE
+
+            EndSect  // PIER
+
+         EndSect  // AREA_1
+
+      EndSect  // RESISTANCE
+
+      [STRUCTURE_MODULE]
+         Structure_Version = 1, 1
+         [CROSSSECTIONS]
+            CrossSectionDataBridge = 'xns11'
+            CrossSectionFile = ||
+         EndSect  // CROSSSECTIONS
+
+         [WEIR]
+            number_of_weirs = 0
+         EndSect  // WEIR
+
+         [CULVERTS]
+            number_of_Culverts = 0
+         EndSect  // CULVERTS
+
+      EndSect  // STRUCTURE_MODULE
+
+      [STRUCTURES]
+         [DIKES]
+            number_of_dikes = 0
+         EndSect  // DIKES
+
+      EndSect  // STRUCTURES
+
+      [OUTPUT_SPECIFICATION]
+         Number_Of_Output_areas = 1
+         [OUTPUT_AREA_1]
+            Type = 2
+            X_Range_And_Interval = <x_range_tmp>, 1
+            Y_Range_And_Interval = <y_range_tmp>, 1
+            Area_no = 1
+            First_Time_Step = 0
+            Last_Time_Step = <number_of_timesteps_tmp>
+            Time_Step_interval = 1
+            Output_item = 3
+            ITEM_NUMBERS = 1, 2, 3
+            Title = ''
+            File_Name = |<output_file_path_tmp>|
+         EndSect  // OUTPUT_AREA_1
+
+         Generate_Hotstart = false
+         [HOTSTART_FILES]
+            [AREA_1]
+               Title = ''
+               File_Name = ''
+            EndSect  // AREA_1
+
+         EndSect  // HOTSTART_FILES
+
+         [INUNDATION_STATISTICS]
+            IncludeInundationStatistics = false
+            InundationFileName = ''
+            InundationFileStoreStep = 0
+         EndSect  // INUNDATION_STATISTICS
+
+      EndSect  // OUTPUT_SPECIFICATION
+
+   EndSect  // HYDRODYNAMIC_MODULE
+
+   [ADVECTION_DISPERSION_MODULE]
+      [OPTION_PARAMETERS]
+      EndSect  // OPTION_PARAMETERS
+
+   EndSect  // ADVECTION_DISPERSION_MODULE
+
+   [MUD_TRANSPORT_MODULE]
+      [OPTION_PARAMETERS]
+      EndSect  // OPTION_PARAMETERS
+
+   EndSect  // MUD_TRANSPORT_MODULE
+
+   [MUD_TRANSPORT_EXPANDED_MODULE]
+      [OPTION_PARAMETERS]
+      EndSect  // OPTION_PARAMETERS
+
+   EndSect  // MUD_TRANSPORT_EXPANDED_MODULE
+
+   [ECO_LAB_MODULE]
+      [OPTION_PARAMETERS]
+      EndSect  // OPTION_PARAMETERS
+
+   EndSect  // ECO_LAB_MODULE
+
+EndSect  // MIKE21_NESTED_MODEL
+
+[MIKEZERO_SETUP_EDITOR]
+   Automatic_Validation = 1
+   [SET_OF_TOUCHED_DIALOGS]
+      DIALOG = 'Boundary'
+      DIALOG = 'Mass Budget'
+      DIALOG = 'Source and Sink'
+      DIALOG = 'Flood and Dry'
+      DIALOG = 'Bathymetry'
+      DIALOG = 'Boundary'
+      DIALOG = 'Boundary'
+      DIALOG = 'Eddy Viscosity'
+      DIALOG = 'Mass Budget'
+      DIALOG = 'Module Selection'
+      DIALOG = 'Resistance'
+      DIALOG = 'Results'
+      DIALOG = 'Simulation Period'
+      DIALOG = 'Source and Sink'
+      DIALOG = 'Source and Sink'
+      DIALOG = 'Structures'
+      DIALOG = 'Initial Surface Elevation'
+      DIALOG = 'Wave Radiation'
+      DIALOG = 'Wind Conditions'
+      DIALOG = 'Boundary'
+      DIALOG = 'Boundary'
+      DIALOG = 'Results'
+      DIALOG = 'Results'
+      DIALOG = 'Boundary'
+      DIALOG = 'Source and Sink'
+      DIALOG = 'Mass Budget'
+      DIALOG = 'Results'
+      DIALOG = 'Results'
+      DIALOG = 'Source and Sink'
+   EndSect  // SET_OF_TOUCHED_DIALOGS
+
+EndSect  // MIKEZERO_SETUP_EDITOR
+

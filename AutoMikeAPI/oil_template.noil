@@ -1,0 +1,1261 @@
+// Created     : 2024-07-14 19:13:12
+// DLL id      : C:\Program Files (x86)\DHI\2014\bin\x64\pfs2004.dll
+// PFS version : Feb  4 2015 19:28:27
+
+[M321_OS]
+   [TIME]
+      Touched = 1
+      start_time = <start_time_tmp>
+      time_step_interval = <time_step_interval_tmp>
+      number_of_time_steps = <number_of_timesteps_tmp>
+   EndSect  // TIME
+
+   [HYDRODYNAMIC_DATA]
+      Touched = 1
+      Number_Of_Computational_Areas = 1
+      Projection = 'PROJCS["UTM-39",GEOGCS["Unused",DATUM["UTM Projections",SPHEROID["WGS 1984",6378137,298.257223563]],PRIMEM["Greenwich",0],UNIT["Degree",0.0174532925199433]],PROJECTION["Transverse_Mercator"],PARAMETER["False_Easting",500000],PARAMETER["False_Northing",0],PARAMETER["Central_Meridian",51],PARAMETER["Scale_Factor",0.9996],PARAMETER["Latitude_Of_Origin",0],UNIT["Meter",1]]'
+      [CURRENT_CONDITIONS]
+         Touched = 1
+         MzSEPfsListItemCount = 1
+         HD_Selection = 1
+         [AREA_1]
+            Touched = 1
+            [DATA_FILE]
+               Touched = 1
+               FILE_NAME = |<level_file_path_tmp>|
+               ITEM_COUNT = 3
+               ITEM_NUMBERS = 1, 2, 3
+            EndSect  // DATA_FILE
+
+         EndSect  // AREA_1
+
+      EndSect  // CURRENT_CONDITIONS
+
+   EndSect  // HYDRODYNAMIC_DATA
+
+   [MODULE_SELECTION]
+      Touched = 1
+      mode_of_hydrodynamic_module = 0
+      hydrodynamic_features = 1
+      mode_of_spectral_wave_module = 0
+      mode_of_transport_module = 0
+      mode_of_mud_transport_module = 0
+      mode_of_eco_lab_module = 0
+      mode_of_sand_transport_module = 0
+      mode_of_particle_tracking_module = 0
+      mode_of_oil_spill_module = 2
+   EndSect  // MODULE_SELECTION
+
+   [MODEL_DEFINITION]
+      Touched = 1
+      model_definition_file = 'Oilspill_A3.ecolab'
+   EndSect  // MODEL_DEFINITION
+
+   [OIL_SPILL_MODULE]
+      mode = 2
+      [CLASSES]
+         Touched = 1
+         MzSEPfsListItemCount = 1
+         number_of_classes = 1
+         [CLASS_1]
+            Touched = 1
+            no_of_lagrange_state_variables = 8
+            no_of_lagrange_derived_output = 70
+            name = 'Oil'
+            description = 'DHI Oil Weathering Model 2013'
+            [LAGRANGE_STATE_VARIABLE_1]
+               ID = 16
+               EUM_type = 100039
+               name = 'Volatile_Mass'
+               unit = 'kg'
+               description = 'Mass of volatile oil fractions ( weight below 160 g/mol, boling point well below 300 deg C)'
+            EndSect  // LAGRANGE_STATE_VARIABLE_1
+
+            [LAGRANGE_STATE_VARIABLE_2]
+               ID = 17
+               EUM_type = 100039
+               name = 'Heavy_Mass'
+               unit = 'kg'
+               description = 'Mass of heavy oil fractions (weight above 160 g/mol, boling point above 300 deg C)'
+            EndSect  // LAGRANGE_STATE_VARIABLE_2
+
+            [LAGRANGE_STATE_VARIABLE_3]
+               ID = 18
+               EUM_type = 100039
+               name = 'Wax_Mass'
+               unit = 'kg'
+               description = 'Wax mass in oil (conservative)'
+            EndSect  // LAGRANGE_STATE_VARIABLE_3
+
+            [LAGRANGE_STATE_VARIABLE_4]
+               ID = 19
+               EUM_type = 100039
+               name = 'Asph_Mass'
+               unit = 'kg'
+               description = 'Asphaltene mass content in oil (conservative)'
+            EndSect  // LAGRANGE_STATE_VARIABLE_4
+
+            [LAGRANGE_STATE_VARIABLE_5]
+               ID = 20
+               EUM_type = 100239
+               name = 'Water_Fract'
+               unit = '()'
+               description = 'Water fraction of oil'
+            EndSect  // LAGRANGE_STATE_VARIABLE_5
+
+            [LAGRANGE_STATE_VARIABLE_6]
+               ID = 21
+               EUM_type = 110220
+               name = 'Dropletd'
+               unit = 'm'
+               description = 'Buoyancy: average diameter of oil droplets'
+            EndSect  // LAGRANGE_STATE_VARIABLE_6
+
+            [LAGRANGE_STATE_VARIABLE_7]
+               ID = 22
+               EUM_type = 100135
+               name = 'Particle_Area'
+               unit = 'm^2'
+               description = 'Surface area of oil particle (active particle area)'
+            EndSect  // LAGRANGE_STATE_VARIABLE_7
+
+            [LAGRANGE_STATE_VARIABLE_8]
+               ID = 23
+               EUM_type = 999
+               name = 'In_Water'
+               unit = 'logical'
+               description = 'Indicates if the particel is in the water or on shore'
+            EndSect  // LAGRANGE_STATE_VARIABLE_8
+
+            [LAGRANGE_DERIVED_OUTPUT_1]
+               ID = 72
+               name = 'total_oilmass'
+               description = 'Total mass inclding heavy, voliatile, wax and asphalten without water'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_1
+
+            [LAGRANGE_DERIVED_OUTPUT_2]
+               ID = 73
+               name = 'Volatile_Mass0'
+               description = 'Volatile components'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_2
+
+            [LAGRANGE_DERIVED_OUTPUT_3]
+               ID = 74
+               name = 'Heavy_Mass0'
+               description = 'Heavy components'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_3
+
+            [LAGRANGE_DERIVED_OUTPUT_4]
+               ID = 75
+               name = 'volatile_fraction'
+               description = 'Volatile fraction (rel. to total oil mass)'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_4
+
+            [LAGRANGE_DERIVED_OUTPUT_5]
+               ID = 76
+               name = 'asphaltene_fraction'
+               description = 'Asphaltene fraction'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_5
+
+            [LAGRANGE_DERIVED_OUTPUT_6]
+               ID = 77
+               name = 'wax_fraction'
+               description = 'Wax fraction'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_6
+
+            [LAGRANGE_DERIVED_OUTPUT_7]
+               ID = 78
+               name = 'water_mass'
+               description = 'Water mass'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_7
+
+            [LAGRANGE_DERIVED_OUTPUT_8]
+               ID = 79
+               name = 'total_mass'
+               description = 'Total mass of oil particle incl. watercontent'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_8
+
+            [LAGRANGE_DERIVED_OUTPUT_9]
+               ID = 80
+               name = 'densWt'
+               description = 'Temperature corrected density of water'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_9
+
+            [LAGRANGE_DERIVED_OUTPUT_10]
+               ID = 81
+               name = 'densLt'
+               description = 'Density of volatile fraction, temperature corrected'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_10
+
+            [LAGRANGE_DERIVED_OUTPUT_11]
+               ID = 82
+               name = 'densHt'
+               description = 'Density of heavy fraction, temperature corrected'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_11
+
+            [LAGRANGE_DERIVED_OUTPUT_12]
+               ID = 83
+               name = 'oil_density'
+               description = 'Density of oil particle without water, temperature corrected'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_12
+
+            [LAGRANGE_DERIVED_OUTPUT_13]
+               ID = 84
+               name = 'emulsion_density'
+               description = 'Density of oil particle including water content, temperature corrected'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_13
+
+            [LAGRANGE_DERIVED_OUTPUT_14]
+               ID = 85
+               name = 'total_volume'
+               description = 'Volume of oil particle'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_14
+
+            [LAGRANGE_DERIVED_OUTPUT_15]
+               ID = 86
+               name = 'i'
+               description = 'Availible light intensity, normalised to 100 Watts/m2'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_15
+
+            [LAGRANGE_DERIVED_OUTPUT_16]
+               ID = 87
+               name = 'terminal_Area'
+               description = 'Maximal slick area based on terminal thickness'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_16
+
+            [LAGRANGE_DERIVED_OUTPUT_17]
+               ID = 88
+               name = 'D'
+               description = 'Diameter for equvalent circular slick'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_17
+
+            [LAGRANGE_DERIVED_OUTPUT_18]
+               ID = 89
+               name = 'dslick'
+               description = 'Slick thichness'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_18
+
+            [LAGRANGE_DERIVED_OUTPUT_19]
+               ID = 90
+               name = 'AreaChangeRate'
+               description = 'Area change rate unless terminal thickness is reached'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_19
+
+            [LAGRANGE_DERIVED_OUTPUT_20]
+               ID = 91
+               name = 'AreaChange'
+               description = 'Area change'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_20
+
+            [LAGRANGE_DERIVED_OUTPUT_21]
+               ID = 92
+               name = 'stability'
+               description = 'Stability index'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_21
+
+            [LAGRANGE_DERIVED_OUTPUT_22]
+               ID = 93
+               name = 'alfaunstable'
+               description = 'Water release rate for unstable emulsion'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_22
+
+            [LAGRANGE_DERIVED_OUTPUT_23]
+               ID = 94
+               name = 'alfamesostable'
+               description = 'Water release rate for mesostable emulsion'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_23
+
+            [LAGRANGE_DERIVED_OUTPUT_24]
+               ID = 95
+               name = 'alfacondition'
+               description = 'Water release rate condition'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_24
+
+            [LAGRANGE_DERIVED_OUTPUT_25]
+               ID = 96
+               name = 'alfa'
+               description = 'Water release rate coefficient'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_25
+
+            [LAGRANGE_DERIVED_OUTPUT_26]
+               ID = 97
+               name = 'waterrelease'
+               description = 'Water release rate'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_26
+
+            [LAGRANGE_DERIVED_OUTPUT_27]
+               ID = 98
+               name = 'parent_viscosity'
+               description = 'Parent viscosity, temperature corrected'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_27
+
+            [LAGRANGE_DERIVED_OUTPUT_28]
+               ID = 99
+               name = 'viscosity'
+               description = 'Viscosity'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_28
+
+            [LAGRANGE_DERIVED_OUTPUT_29]
+               ID = 100
+               name = 'wateruptake'
+               description = 'Water uptake rate'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_29
+
+            [LAGRANGE_DERIVED_OUTPUT_30]
+               ID = 101
+               name = 'K2'
+               description = 'Detailed evaporation: Mass transfer coefficient'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_30
+
+            [LAGRANGE_DERIVED_OUTPUT_31]
+               ID = 102
+               name = 'evappot_detailed'
+               description = 'Detailed evaporation: actual evaporation mass loss in time step'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_31
+
+            [LAGRANGE_DERIVED_OUTPUT_32]
+               ID = 103
+               name = 's_evap_tc_l'
+               description = 'Simple evaporation: temperature correction for logarithmic oil type'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_32
+
+            [LAGRANGE_DERIVED_OUTPUT_33]
+               ID = 104
+               name = 's_evap_tc_q'
+               description = 'Simple evaporation: temperature correction for quardratic oil type'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_33
+
+            [LAGRANGE_DERIVED_OUTPUT_34]
+               ID = 105
+               name = 's_evap_t1'
+               description = 'Simple evaporation, percent lost until last time step'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_34
+
+            [LAGRANGE_DERIVED_OUTPUT_35]
+               ID = 106
+               name = 's_evap_t'
+               description = 'Simple evaporation: percent lost until current time step'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_35
+
+            [LAGRANGE_DERIVED_OUTPUT_36]
+               ID = 107
+               name = 's_evap_mass_loss'
+               description = 'Simple evaporation: mass loss in current time step'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_36
+
+            [LAGRANGE_DERIVED_OUTPUT_37]
+               ID = 108
+               name = 'evappot_simple'
+               description = 'Simple evaporation: Maximum evaporation'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_37
+
+            [LAGRANGE_DERIVED_OUTPUT_38]
+               ID = 109
+               name = 'evappot'
+               description = 'Evaporation: apply select evaporation formulation, Maximum evaporation'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_38
+
+            [LAGRANGE_DERIVED_OUTPUT_39]
+               ID = 110
+               name = 'BIOD_volatile'
+               description = 'Biodegradation volatile fraction'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_39
+
+            [LAGRANGE_DERIVED_OUTPUT_40]
+               ID = 111
+               name = 'BIOD_heavy'
+               description = 'Biodegradation heavy fraction'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_40
+
+            [LAGRANGE_DERIVED_OUTPUT_41]
+               ID = 112
+               name = 'PHOT_volatile'
+               description = 'Photooxidation volatile fraction'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_41
+
+            [LAGRANGE_DERIVED_OUTPUT_42]
+               ID = 113
+               name = 'PHOT_heavy'
+               description = 'Photooxidation heavy fraction'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_42
+
+            [LAGRANGE_DERIVED_OUTPUT_43]
+               ID = 114
+               name = 'evappot2'
+               description = 'Total evaporated mass, corrected for avaliable mass'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_43
+
+            [LAGRANGE_DERIVED_OUTPUT_44]
+               ID = 115
+               name = 'EVAP'
+               description = 'Evaporation, applied rate for surface particles'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_44
+
+            [LAGRANGE_DERIVED_OUTPUT_45]
+               ID = 116
+               name = 'buoyancy'
+               description = 'Vertical buoyancy velocity of oil particle'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_45
+
+            [LAGRANGE_DERIVED_OUTPUT_46]
+               ID = 117
+               name = 'setv'
+               description = 'Vertical velocity of oil particle'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_46
+
+            [LAGRANGE_DERIVED_OUTPUT_47]
+               ID = 118
+               name = 'DISS_volatile_S'
+               description = 'Dissolution volatile fraction: Surface'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_47
+
+            [LAGRANGE_DERIVED_OUTPUT_48]
+               ID = 119
+               name = 'DISS_heavy_S'
+               description = 'Dissolution heavy fraction: Surface'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_48
+
+            [LAGRANGE_DERIVED_OUTPUT_49]
+               ID = 120
+               name = 'DISS_volatile_WC'
+               description = 'Dissolution volatile fraction: Water column'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_49
+
+            [LAGRANGE_DERIVED_OUTPUT_50]
+               ID = 121
+               name = 'DISS_heavy_WC'
+               description = 'Dissolution heavy fraction: Water column'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_50
+
+            [LAGRANGE_DERIVED_OUTPUT_51]
+               ID = 122
+               name = 'centr'
+               description = 'Entrainment coefficient'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_51
+
+            [LAGRANGE_DERIVED_OUTPUT_52]
+               ID = 123
+               name = 'dba'
+               description = 'Energy dissipation in a wave breaking event'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_52
+
+            [LAGRANGE_DERIVED_OUTPUT_53]
+               ID = 124
+               name = 'fwc'
+               description = 'Fraction of sea surface hit by breaking waves (-)'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_53
+
+            [LAGRANGE_DERIVED_OUTPUT_54]
+               ID = 125
+               name = 'd50'
+               description = 'Average droplet diameter'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_54
+
+            [LAGRANGE_DERIVED_OUTPUT_55]
+               ID = 126
+               name = 'Qr'
+               description = 'Vertical Entrainment rate of oil droplets'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_55
+
+            [LAGRANGE_DERIVED_OUTPUT_56]
+               ID = 127
+               name = 'Q'
+               description = 'Vertical Entrainment of oil droplets'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_56
+
+            [LAGRANGE_DERIVED_OUTPUT_57]
+               ID = 128
+               name = 'Pent'
+               description = 'Probability of vertical Entrainment of oil droplets - option 2 (1/n)'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_57
+
+            [LAGRANGE_DERIVED_OUTPUT_58]
+               ID = 129
+               name = 'DISP_wave'
+               description = 'Vertical dispersion total oil due to wave action'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_58
+
+            [LAGRANGE_DERIVED_OUTPUT_59]
+               ID = 130
+               name = 'surface_amount'
+               description = 'Actual surface oil amount'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_59
+
+            [LAGRANGE_DERIVED_OUTPUT_60]
+               ID = 131
+               name = 'suspended_amount'
+               description = 'Actual suspended oil amount'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_60
+
+            [LAGRANGE_DERIVED_OUTPUT_61]
+               ID = 132
+               name = 'bottom_amount'
+               description = 'Actual bottom oil amount'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_61
+
+            [LAGRANGE_DERIVED_OUTPUT_62]
+               ID = 133
+               name = 'stranded_amount'
+               description = 'Stranded oil amount on land/bottom'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_62
+
+            [LAGRANGE_DERIVED_OUTPUT_63]
+               ID = 134
+               name = 'droplet_d_change'
+               description = 'Change of the droplet size when dispersion due wave action occurs, as rate of a simple zero order process'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_63
+
+            [LAGRANGE_DERIVED_OUTPUT_64]
+               ID = 135
+               name = 'LockAtBeach'
+               description = 'Trigger, becomes 1 if particle should be locked on shore'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_64
+
+            [LAGRANGE_DERIVED_OUTPUT_65]
+               ID = 136
+               name = 'ChangeImmersedState'
+               description = 'Set AllowMoving to zero to lock a particle in position'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_65
+
+            [LAGRANGE_DERIVED_OUTPUT_66]
+               ID = 137
+               name = 'NotBoomLocked'
+               description = 'Set to zero to lock a particle at a boom'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_66
+
+            [LAGRANGE_DERIVED_OUTPUT_67]
+               ID = 138
+               name = 'AllowMoving'
+               description = 'Check if not beached and not boom locked'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_67
+
+            [LAGRANGE_DERIVED_OUTPUT_68]
+               ID = 139
+               name = 'debug'
+               description = 'Used for debug output'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_68
+
+            [LAGRANGE_DERIVED_OUTPUT_69]
+               ID = 140
+               name = 'Remove_Oil'
+               description = 'Function to Remove particles under a certain threshold'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_69
+
+            [LAGRANGE_DERIVED_OUTPUT_70]
+               ID = 141
+               name = 'Layer_Mass'
+               description = 'Oil mass in a defined output layer'
+            EndSect  // LAGRANGE_DERIVED_OUTPUT_70
+
+         EndSect  // CLASS_1
+
+      EndSect  // CLASSES
+
+      [CONSTANTS]
+         Touched = 1
+         MzSEPfsListItemCount = 3
+         number_of_constants = 3
+         [CONSTANT_1]
+            Touched = 1
+            ID = 1
+            user_specified = true
+            spatial_variation = 0
+            build_in_ID = -1
+            data_format = 0
+            value = 8.206e-005
+            file_name = ''
+            item_number = 1
+         EndSect  // CONSTANT_1
+
+         [CONSTANT_2]
+            Touched = 1
+            ID = 2
+            user_specified = false
+            spatial_variation = 0
+            build_in_ID = 65
+            data_format = 0
+            value = 30
+            file_name = ''
+            item_number = 1
+         EndSect  // CONSTANT_2
+
+         [CONSTANT_3]
+            Touched = 1
+            ID = 3
+            user_specified = true
+            spatial_variation = 0
+            build_in_ID = -1
+            data_format = 0
+            value = 1.002
+            file_name = ''
+            item_number = 1
+         EndSect  // CONSTANT_3
+
+      EndSect  // CONSTANTS
+
+      [LAGRANGE_CONSTANTS]
+         Touched = 1
+         MzSEPfsListItemCount = 48
+         number_of_lagrange_constants = 48
+         [CONSTANT_1]
+            Touched = 1
+            ID = 24
+            specie = 1
+            value = 1
+         EndSect  // CONSTANT_1
+
+         [CONSTANT_2]
+            Touched = 1
+            ID = 25
+            specie = 1
+            value = 2.7
+         EndSect  // CONSTANT_2
+
+         [CONSTANT_3]
+            Touched = 1
+            ID = 26
+            specie = 1
+            value = 123
+         EndSect  // CONSTANT_3
+
+         [CONSTANT_4]
+            Touched = 1
+            ID = 27
+            specie = 1
+            value = 0.005
+         EndSect  // CONSTANT_4
+
+         [CONSTANT_5]
+            Touched = 1
+            ID = 28
+            specie = 1
+            value = 0
+         EndSect  // CONSTANT_5
+
+         [CONSTANT_6]
+            Touched = 1
+            ID = 29
+            specie = 1
+            value = 10
+         EndSect  // CONSTANT_6
+
+         [CONSTANT_7]
+            Touched = 1
+            ID = 30
+            specie = 1
+            value = 2.67
+         EndSect  // CONSTANT_7
+
+         [CONSTANT_8]
+            Touched = 1
+            ID = 31
+            specie = 1
+            value = 0.06
+         EndSect  // CONSTANT_8
+
+         [CONSTANT_9]
+            Touched = 1
+            ID = 32
+            specie = 1
+            value = 0.1
+         EndSect  // CONSTANT_9
+
+         [CONSTANT_10]
+            Touched = 1
+            ID = 33
+            specie = 1
+            value = 0.005
+         EndSect  // CONSTANT_10
+
+         [CONSTANT_11]
+            Touched = 1
+            ID = 34
+            specie = 1
+            value = 0
+         EndSect  // CONSTANT_11
+
+         [CONSTANT_12]
+            Touched = 1
+            ID = 35
+            specie = 1
+            value = 0.5
+         EndSect  // CONSTANT_12
+
+         [CONSTANT_13]
+            Touched = 1
+            ID = 36
+            specie = 1
+            value = 3.3
+         EndSect  // CONSTANT_13
+
+         [CONSTANT_14]
+            Touched = 1
+            ID = 37
+            specie = 1
+            value = 200
+         EndSect  // CONSTANT_14
+
+         [CONSTANT_15]
+            Touched = 1
+            ID = 38
+            specie = 1
+            value = 2e-006
+         EndSect  // CONSTANT_15
+
+         [CONSTANT_16]
+            Touched = 1
+            ID = 39
+            specie = 1
+            value = 796
+         EndSect  // CONSTANT_16
+
+         [CONSTANT_17]
+            Touched = 1
+            ID = 40
+            specie = 1
+            value = 886
+         EndSect  // CONSTANT_17
+
+         [CONSTANT_18]
+            Touched = 1
+            ID = 41
+            specie = 1
+            value = 2e-005
+         EndSect  // CONSTANT_18
+
+         [CONSTANT_19]
+            Touched = 1
+            ID = 42
+            specie = 1
+            value = 2e-007
+         EndSect  // CONSTANT_19
+
+         [CONSTANT_20]
+            Touched = 1
+            ID = 43
+            specie = 1
+            value = 0.0007
+         EndSect  // CONSTANT_20
+
+         [CONSTANT_21]
+            Touched = 1
+            ID = 44
+            specie = 1
+            value = 0.0007
+         EndSect  // CONSTANT_21
+
+         [CONSTANT_22]
+            Touched = 1
+            ID = 45
+            specie = 1
+            value = 0
+         EndSect  // CONSTANT_22
+
+         [CONSTANT_23]
+            Touched = 1
+            ID = 46
+            specie = 1
+            value = 0
+         EndSect  // CONSTANT_23
+
+         [CONSTANT_24]
+            Touched = 1
+            ID = 47
+            specie = 1
+            value = 1
+         EndSect  // CONSTANT_24
+
+         [CONSTANT_25]
+            Touched = 1
+            ID = 48
+            specie = 1
+            value = 0.4
+         EndSect  // CONSTANT_25
+
+         [CONSTANT_26]
+            Touched = 1
+            ID = 49
+            specie = 1
+            value = 0.4
+         EndSect  // CONSTANT_26
+
+         [CONSTANT_27]
+            Touched = 1
+            ID = 50
+            specie = 1
+            value = 5
+         EndSect  // CONSTANT_27
+
+         [CONSTANT_28]
+            Touched = 1
+            ID = 51
+            specie = 1
+            value = 1000
+         EndSect  // CONSTANT_28
+
+         [CONSTANT_29]
+            Touched = 1
+            ID = 52
+            specie = 1
+            value = 0.05
+         EndSect  // CONSTANT_29
+
+         [CONSTANT_30]
+            Touched = 1
+            ID = 53
+            specie = 1
+            value = 0.05
+         EndSect  // CONSTANT_30
+
+         [CONSTANT_31]
+            Touched = 1
+            ID = 54
+            specie = 1
+            value = 0.25
+         EndSect  // CONSTANT_31
+
+         [CONSTANT_32]
+            Touched = 1
+            ID = 55
+            specie = 1
+            value = 1.68
+         EndSect  // CONSTANT_32
+
+         [CONSTANT_33]
+            Touched = 1
+            ID = 56
+            specie = 1
+            value = 40
+         EndSect  // CONSTANT_33
+
+         [CONSTANT_34]
+            Touched = 1
+            ID = 57
+            specie = 1
+            value = -0.136
+         EndSect  // CONSTANT_34
+
+         [CONSTANT_35]
+            Touched = 1
+            ID = 58
+            specie = 1
+            value = 150
+         EndSect  // CONSTANT_35
+
+         [CONSTANT_36]
+            Touched = 1
+            ID = 59
+            specie = 1
+            value = 0.001
+         EndSect  // CONSTANT_36
+
+         [CONSTANT_37]
+            Touched = 1
+            ID = 60
+            specie = 1
+            value = 0
+         EndSect  // CONSTANT_37
+
+         [CONSTANT_38]
+            Touched = 1
+            ID = 61
+            specie = 1
+            value = 10
+         EndSect  // CONSTANT_38
+
+         [CONSTANT_39]
+            Touched = 1
+            ID = 62
+            specie = 1
+            value = 1
+         EndSect  // CONSTANT_39
+
+         [CONSTANT_40]
+            Touched = 1
+            ID = 63
+            specie = 1
+            value = 1
+         EndSect  // CONSTANT_40
+
+         [CONSTANT_41]
+            Touched = 1
+            ID = 64
+            specie = 1
+            value = 1
+         EndSect  // CONSTANT_41
+
+         [CONSTANT_42]
+            Touched = 1
+            ID = 65
+            specie = 1
+            value = 1
+         EndSect  // CONSTANT_42
+
+         [CONSTANT_43]
+            Touched = 1
+            ID = 66
+            specie = 1
+            value = 1
+         EndSect  // CONSTANT_43
+
+         [CONSTANT_44]
+            Touched = 1
+            ID = 67
+            specie = 1
+            value = 1
+         EndSect  // CONSTANT_44
+
+         [CONSTANT_45]
+            Touched = 1
+            ID = 68
+            specie = 1
+            value = 1
+         EndSect  // CONSTANT_45
+
+         [CONSTANT_46]
+            Touched = 1
+            ID = 69
+            specie = 1
+            value = 1
+         EndSect  // CONSTANT_46
+
+         [CONSTANT_47]
+            Touched = 1
+            ID = 70
+            specie = 1
+            value = 1
+         EndSect  // CONSTANT_47
+
+         [CONSTANT_48]
+            Touched = 1
+            ID = 71
+            specie = 1
+            value = 1
+         EndSect  // CONSTANT_48
+
+      EndSect  // LAGRANGE_CONSTANTS
+
+      [FORCINGS]
+         Touched = 1
+         MzSEPfsListItemCount = 12
+         number_of_forcings = 12
+         [FORCING_1]
+            Touched = 1
+            ID = 4
+            user_specified = false
+            spatial_variation = 3
+            build_in_ID = 11
+         EndSect  // FORCING_1
+
+         [FORCING_2]
+            Touched = 1
+            ID = 5
+            user_specified = false
+            spatial_variation = 3
+            build_in_ID = 12
+         EndSect  // FORCING_2
+
+         [FORCING_3]
+            Touched = 1
+            ID = 6
+            user_specified = false
+            spatial_variation = 3
+            build_in_ID = 13
+         EndSect  // FORCING_3
+
+         [FORCING_4]
+            Touched = 1
+            ID = 7
+            user_specified = false
+            spatial_variation = 2
+            build_in_ID = 7
+         EndSect  // FORCING_4
+
+         [FORCING_5]
+            Touched = 1
+            ID = 8
+            user_specified = true
+            spatial_variation = 3
+            build_in_ID = -1
+            data_format = 2
+            value = 22
+            file_name = |<meteo_file_path_tmp>|
+            item_number = 5
+         EndSect  // FORCING_5
+
+         [FORCING_6]
+            Touched = 1
+            ID = 9
+            user_specified = true
+            spatial_variation = 3
+            build_in_ID = -1
+            data_format = 0
+            value = 1010.5
+            file_name = ||
+            item_number = 1
+         EndSect  // FORCING_6
+
+         [FORCING_7]
+            Touched = 1
+            ID = 10
+            user_specified = true
+            spatial_variation = 0
+            build_in_ID = -1
+            data_format = 1
+            value = 1000
+            file_name = |<ssrd_file_path_tmp>|
+            item_number = 1
+         EndSect  // FORCING_7
+
+         [FORCING_8]
+            Touched = 1
+            ID = 11
+            user_specified = true
+            spatial_variation = 2
+            build_in_ID = -1
+            data_format = 0
+            value = 0.5
+            file_name = ||
+            item_number = 1
+         EndSect  // FORCING_8
+
+         [FORCING_9]
+            Touched = 1
+            ID = 12
+            user_specified = true
+            spatial_variation = 2
+            build_in_ID = -1
+            data_format = 0
+            value = 4
+            file_name = ||
+            item_number = 1
+         EndSect  // FORCING_9
+
+         [FORCING_10]
+            Touched = 1
+            ID = 13
+            user_specified = true
+            spatial_variation = 2
+            build_in_ID = -1
+            data_format = 0
+            value = 0
+            file_name = ||
+            item_number = 1
+         EndSect  // FORCING_10
+
+         [FORCING_11]
+            Touched = 1
+            ID = 14
+            user_specified = true
+            spatial_variation = 2
+            build_in_ID = -1
+            data_format = 0
+            value = 0
+            file_name = ||
+            item_number = 1
+         EndSect  // FORCING_11
+
+         [FORCING_12]
+            Touched = 1
+            ID = 15
+            user_specified = true
+            spatial_variation = 2
+            build_in_ID = -1
+            data_format = 0
+            value = 0
+            file_name = ||
+            item_number = 1
+         EndSect  // FORCING_12
+
+      EndSect  // FORCINGS
+
+      [LAGRANGE_FORCINGS]
+         Touched = 0
+         MzSEPfsListItemCount = 0
+         number_of_forcings = 0
+      EndSect  // LAGRANGE_FORCINGS
+
+      [SPATIAL_FUNCTIONS]
+         Touched = 1
+         number_of_spatial_functions = 0
+      EndSect  // SPATIAL_FUNCTIONS
+
+      [SOURCES]
+         <sources_tmp>
+      EndSect  // SOURCES
+
+      [DISPERSION]
+         [HORIZONTAL_DISPERSION]
+            Touched = 1
+            MzSEPfsListItemCount = 1
+            [CLASS_1]
+               Touched = 1
+               type = 1
+               [DISPERSION_COEFFICIENT]
+                  Touched = 1
+                  type = 1
+                  format = 0
+                  constant_value = 1
+                  file_name = ||
+                  item_number = 1
+                  item_name = ''
+                  type_of_soft_start = 2
+                  soft_time_interval = 0
+                  reference_value = 0
+                  type_of_time_interpolation = 1
+               EndSect  // DISPERSION_COEFFICIENT
+
+               [SCALED_EDDY_VISCOSITY]
+                  Touched = 1
+                  sigma = 1
+               EndSect  // SCALED_EDDY_VISCOSITY
+
+            EndSect  // CLASS_1
+
+         EndSect  // HORIZONTAL_DISPERSION
+
+         [VERTICAL_DISPERSION]
+            Touched = 1
+            MzSEPfsListItemCount = 1
+            [CLASS_1]
+               Touched = 1
+               type = 1
+               [DISPERSION_COEFFICIENT]
+                  Touched = 1
+                  type = 1
+                  format = 0
+                  constant_value = 0.001
+                  file_name = ||
+                  item_number = 1
+                  item_name = ''
+                  type_of_soft_start = 2
+                  soft_time_interval = 0
+                  reference_value = 0
+                  type_of_time_interpolation = 1
+               EndSect  // DISPERSION_COEFFICIENT
+
+               [SCALED_EDDY_VISCOSITY]
+                  Touched = 1
+                  sigma = 1
+               EndSect  // SCALED_EDDY_VISCOSITY
+
+            EndSect  // CLASS_1
+
+         EndSect  // VERTICAL_DISPERSION
+
+      EndSect  // DISPERSION
+
+      [DRIFT_PROFILE]
+         Touched = 1
+         type = 3
+         [WIND_INDUCED_PROFILE]
+            wind_drift_factor = 0.03
+            depth_of_wind_influence = 11
+            offshore_limit = 11
+         EndSect  // WIND_INDUCED_PROFILE
+
+         [SURFACE_WIND_ACCELERATION]
+            wind_weight = 0.1
+            wind_drift_angle_parameter = 28
+            kinematic_viscosity = 1.14e-006
+         EndSect  // SURFACE_WIND_ACCELERATION
+
+      EndSect  // DRIFT_PROFILE
+
+      [BED_ROUGHNESS]
+         Touched = 1
+         type = 2
+         format = 0
+         constant_value = 0.03
+         file_name = ||
+         item_number = 1
+         item_name = ''
+         type_of_soft_start = 2
+         soft_time_interval = 0
+         reference_value = 0
+         type_of_time_interpolation = 1
+      EndSect  // BED_ROUGHNESS
+
+      [WIND_FORCING]
+         Touched = 1
+         type = 2
+         format = 3
+         constant_speed = 0
+         constant_direction = 0
+         file_name = |<meteo_file_path_tmp>|
+         item_number_for_x_velocity = 1
+         item_number_for_y_velocity = 2
+         item_name_for_x_velocity = '10U'
+         item_name_for_y_velocity = '10V'
+         soft_time_interval = 0
+      EndSect  // WIND_FORCING
+
+      [OUTPUTS]
+         Touched = 1
+         MzSEPfsListItemCount = 1
+         number_of_outputs = 1
+         [OUTPUT_1]
+            Touched = 1
+            include = 1
+            title = 'Output 1'
+            datatype = 1
+            file_name = |<output_file_path_tmp>|
+            area = 1
+            resfactor = -1
+            filedim = 2
+            upperz = 0
+            lowerz = -10
+            SpatialOption = 0
+            SpatialFactorOption = 0
+            first_time_step = 0
+            last_time_step = <number_of_timesteps_tmp>
+            time_step_frequency = 20
+            first_particle = 1
+            last_particle = 96000
+            particle_frequency = 1
+            [PARAMETERS_2D]
+               Touched = 0
+               [CLASS_1]
+                  LAGRANGE_STATE_VARIABLE_1 = 1
+                  LAGRANGE_STATE_VARIABLE_2 = 1
+                  LAGRANGE_STATE_VARIABLE_3 = 1
+                  LAGRANGE_STATE_VARIABLE_4 = 1
+                  LAGRANGE_STATE_VARIABLE_5 = 1
+                  LAGRANGE_STATE_VARIABLE_6 = 1
+                  LAGRANGE_STATE_VARIABLE_7 = 1
+                  LAGRANGE_STATE_VARIABLE_8 = 1
+               EndSect  // CLASS_1
+
+               SURFACE_ELEVATION = 0
+               STILL_WATER_DEPTH = 0
+               TOTAL_WATER_DEPTH = 0
+               DEPTH_AVERAGE_U_VELOCITY = 0
+               DEPTH_AVERAGE_V_VELOCITY = 0
+            EndSect  // PARAMETERS_2D
+
+            [PARAMETERS_3D]
+               Touched = 0
+               [CLASS_1]
+                  LAGRANGE_STATE_VARIABLE_1 = 1
+                  LAGRANGE_STATE_VARIABLE_2 = 1
+                  LAGRANGE_STATE_VARIABLE_3 = 1
+                  LAGRANGE_STATE_VARIABLE_4 = 1
+                  LAGRANGE_STATE_VARIABLE_5 = 1
+                  LAGRANGE_STATE_VARIABLE_6 = 1
+                  LAGRANGE_STATE_VARIABLE_7 = 1
+                  LAGRANGE_STATE_VARIABLE_8 = 1
+               EndSect  // CLASS_1
+
+               U_VELOCITY = 0
+               V_VELOCITY = 0
+               W_VELOCITY = 0
+            EndSect  // PARAMETERS_3D
+
+         EndSect  // OUTPUT_1
+
+      EndSect  // OUTPUTS
+
+   EndSect  // OIL_SPILL_MODULE
+
+EndSect  // M321_OS
+

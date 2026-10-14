@@ -1,0 +1,39 @@
+# Секреты
+.env
+
+# Python
+__pycache__/
+*.pyc
+
+# Логи
+*.log
+
+# Sentinel1OilSpillMonitor: снимки, веса модели, рабочие папки
+Sentinel1OilSpillMonitor/inputs/
+Sentinel1OilSpillMonitor/inputs_old/
+Sentinel1OilSpillMonitor/test_data/
+Sentinel1OilSpillMonitor/configs/*.pth
+Sentinel1OilSpillMonitor/crop_images/
+Sentinel1OilSpillMonitor/predicted_crop_images/
+Sentinel1OilSpillMonitor/predicted_images/
+Sentinel1OilSpillMonitor/src_images/
+Sentinel1OilSpillMonitor/visualization_crop/
+*.tif
+*.tiff
+*.7z
+*.docx
+~$*
+
+# AutoMikeAPI: файлы, которые генерируются из template_* при каждом расчёте
+AutoMikeAPI/hydro.m21
+AutoMikeAPI/oil.noil
+AutoMikeAPI/*._spi_
+AutoMikeAPI/max2shp.mzt
+AutoMikeAPI/max2txt.mzt
+AutoMikeAPI/max_creation.mzt
+AutoMikeAPI/oil2shp.mzt
+AutoMikeAPI/oil2txt.mzt
+AutoMikeAPI/data/
+
+# Инструкция со старым паролем VM
+comand.txt
